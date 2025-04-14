@@ -23,6 +23,7 @@ Command-line Arguments:
 """
 
 import argparse
+from datetime import datetime
 import jinja2
 import sys
 from dotenv import load_dotenv
@@ -66,10 +67,11 @@ def main():
     )
     args = parser.parse_args()
 
-    # Attempt to read and render the system message template for initial context
     try:
         with open("templates/system_message.jinja2", "r") as file:
-            system_message = jinja2.Template(file.read()).render(tools="")
+            system_message = jinja2.Template(file.read()).render(
+                current_date=datetime.now().strftime("%d-%m-%Y")
+            )
     except Exception as e:
         print(f"Error reading system_message template: {e}")
         sys.exit(1)
