@@ -1,0 +1,22 @@
+You are an expert in writing research reports.
+Given the research we have carried out so far, we need to write a comprehensive report that addresses the user's research goals.
+
+The report should be structured as follows:
+
+{{ outline.title }}
+{% for section in outline.sections %}
+    {{ section.title }}
+    {{ section.description }}
+{% endfor %}
+
+Here is what we have written so far:
+
+{{ report_so_far }}
+
+We need to continue writing the report. Your task is to write the section: {{ current_section.title }}.
+
+Please cite your sources using in-text citations in the APA style.
+
+Make use of beautiful markdown formatting.
+
+Please write the {{ current_section }} now. Start by writing the section title, and continue by writing the content of the section.
