@@ -5,10 +5,10 @@ This script implements a CLI Chat Application that utilizes two agents:
 1. A main agent (`main_agent`) designed to interact with the user and
    handle general conversation.
 2. A research agent (`research_agent`) designed to autonomously carry
-   out market research tasks.
+   out research tasks.
 
 The agents work together with a set of tools to provide a conversational
-interface for market research.
+interface for research.
 
 Usage:
     python app.py [--main_turns N] [--research_turns N]
@@ -86,7 +86,7 @@ def main():
     # Create and configure the research agent with relevant tools
     research_agent = Agent(
         name="research_agent",
-        description="This agent is designed to autonomously carry out market research.",
+        description="This agent is designed to autonomously carry out research.",
         tools=[Search(), Extract(), Reasoning(), write_report],
         max_turns=args.research_turns,
         terminating=True,
@@ -99,7 +99,7 @@ def main():
     # Set up the main agent with its tools, including the research agent
     main_agent = Agent(
         name="main_agent",
-        description="This agent is designed to help users with market research.",
+        description="This agent is designed to help users with research.",
         tools=[Reasoning(), respond, research_agent],
         max_turns=args.main_turns,
         terminating=True,
@@ -107,7 +107,7 @@ def main():
     )
 
     console = Console()
-    console.print("[bold magenta]Market Research Agent[/bold magenta]")
+    console.print("[bold magenta]Research Agent[/bold magenta]")
     console.print(
         "Type your message and press Enter to chat.\n"
         "Special commands: [bold green]reset[/bold green] to clear conversation (system message is retained), "
